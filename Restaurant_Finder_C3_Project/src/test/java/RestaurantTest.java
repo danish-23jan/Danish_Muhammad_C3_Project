@@ -45,6 +45,32 @@ class RestaurantTest {
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    //<<<<<<<<<<<<<<<<<<<<<<<<<ORDER VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void total_order_value_should_increase_when_an_item_is_selected() {
+
+        List<String> selectedItems = new ArrayList<String>();
+        selectedItems.add("Sweet corn soup");
+        selectedItems.add("Vegetable lasagne");
+        assertEquals(388, restaurant.getOrderTotal(selectedItems));
+    }
+
+    @Test
+    public void total_order_value_should_decrease_when_an_item_is_removed(){
+        List<String> selectedItems = new ArrayList<String>();
+        selectedItems.add("Sweet corn soup");
+        selectedItems.add("Vegetable lasagne");
+        selectedItems.remove("Vegetable lasagne");
+        assertEquals(119,restaurant.getOrderTotal(selectedItems));
+
+    }
+    @Test
+    public void total_order_value_should_be_zero_when_cart_is_empty(){
+        List<String> selectedItems = new ArrayList<String>();
+        assertEquals(0,restaurant.getOrderTotal(selectedItems));
+    }
+    //<<<<<<<<<<<<<<<<<<<<<<<<<ORDER VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
     public void adding_item_to_menu_should_increase_menu_size_by_1(){
